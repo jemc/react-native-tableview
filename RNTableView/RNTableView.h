@@ -62,6 +62,8 @@
 @property(nonatomic, strong) UIColor *headerBackgroundColor;
 @property(nonatomic, strong) UIFont *footerFont;
 @property(nonatomic, strong) UIColor *footerTextColor;
+@property(nonatomic, strong) UIColor *footerBackgroundColor;
+@property(nonatomic, strong) UIColor *cellBackgroundColor;
 
 @property(nonatomic, strong) UIColor *textColor;
 @property(nonatomic, strong) UIColor *tintColor;

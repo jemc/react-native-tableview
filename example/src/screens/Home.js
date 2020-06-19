@@ -35,6 +35,7 @@ const App = ({ navigation }) => {
           </Item>
           <Item onPress={() => navigate('refresh')}>Pull to Refresh</Item>
           <Item onPress={() => navigate('index')}>Scroll To Index</Item>
+          <Item onPress={() => navigate('colors')}>Custom Colors</Item>
         </Section>
       </TableView>
     </>

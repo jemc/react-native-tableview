@@ -406,6 +406,9 @@ Colors:
 - `headerTextColor`
 - `headerBackgroundColor`
 - `footerTextColor`
+- `footerBackgroundColor`
+- `cellBackgroundColor`
+- `selectedBackgroundColor`
 
 Base font:
 

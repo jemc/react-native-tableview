@@ -238,6 +238,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     if (self.footerFont){
         footer.textLabel.font = self.footerFont;
     }
+
+    if (self.footerBackgroundColor) {
+        footer.contentView.backgroundColor = self.footerBackgroundColor;
+    }
 }
 
 -(void)addRefresh  {
@@ -355,6 +359,8 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         if (item[@"transparent"])
         {
             [cell setBackgroundColor:[UIColor clearColor]];
+        } else if (self.cellBackgroundColor) {
+            [cell setBackgroundColor:self.cellBackgroundColor];
         } else {
             [cell setBackgroundColor:[UIColor whiteColor]];
         }
