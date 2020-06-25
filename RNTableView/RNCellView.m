@@ -13,7 +13,7 @@
 
 -(void)setTableView:(UITableView *)tableView {
     _tableView = tableView;
-    _tableViewCell = [[RNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CustomCell"];
+    _tableViewCell = [[RNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     _tableViewCell.cellView = self;
 }
 

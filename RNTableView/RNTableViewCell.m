@@ -17,6 +17,7 @@
 
 -(void)setFrame:(CGRect)frame {
     [super setFrame:frame];
+    [self.contentView addSubview:_cellView];
     [_cellView setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
 }
 

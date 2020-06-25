@@ -66,9 +66,8 @@
 
 - (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex
 {
-    // will not insert because we don't need to draw them
-    //   [super insertSubview:subview atIndex:atIndex];
-    
+    [super insertReactSubview:subview atIndex:atIndex];
+
     // just add them to registry
     if ([subview isKindOfClass:[RNCellView class]]){
         RNCellView *cellView = (RNCellView *)subview;
@@ -87,6 +86,18 @@
         RNTableHeaderView *headerView = (RNTableHeaderView *)subview;
         headerView.tableView = self.tableView;
     }
+}
+
+- (void)removeReactSubview:(UIView *)subview
+{
+    if ([subview isKindOfClass:[RNCellView class]]){
+        RNCellView *cellView = (RNCellView *)subview;
+        [_cells[cellView.section] removeObject:cellView];
+        [subview removeFromSuperview];
+    }
+    // TODO: handle dynamic removal of footerView and headerView?
+
+    [super removeReactSubview:subview];
 }
 
 - (instancetype)initWithBridge:(RCTBridge *)bridge {
@@ -390,6 +401,8 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self removeReactSubview:cell];
+
     self.onEndDisplayingCell(@{@"target":self.reactTag, @"row":@(indexPath.row), @"section": @(indexPath.section)});
 }
 
@@ -446,7 +459,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
                 return 0;
             }
         }
-        count = [_cells[section] count];
     }
     return count;
 }
